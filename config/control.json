@@ -1,0 +1,13 @@
+{
+  "action" : "Replace",
+  "csv" :
+    {
+      "useSocrataGeocoding" : true,
+      "columns" : null,
+      "skip" : 0,
+      "separator" : ",",
+      "quote" : "\"",
+      "encoding" : "utf-8",
+      "emptyTextIsNull" : true
+    }
+}
