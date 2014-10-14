@@ -37,8 +37,14 @@ task :upload_published_in_bath do
   sh %{java -jar vendor/DataSync-#{ENV["DATASYNC_VERSION"]}.jar -f data/published-in-bath.csv -i #{ENV["DATASET_PUBLISHED_IN_BATH"]} -ph true -c config/config.json -cf config/control.json }
 end
 
+task :upload_set_in_bath do
+  sh %{java -jar vendor/DataSync-#{ENV["DATASYNC_VERSION"]}.jar -f data/set-in-bath.csv -i #{ENV["DATASET_SET_IN_BATH"]} -ph true -c config/config.json -cf config/control.json }
+end
+
 task :bl_data => [:published_in_bath, :about_bath]
 
+task :upload_lt_data => [:prepare_config, :set_in_bath, :upload_set_in_bath]
+  
 task :upload_bl_data => [:prepare_config, :bl_data, :upload_about_bath, :upload_published_in_bath]
     
 task :prepare_config do
@@ -52,4 +58,4 @@ task :prepare_config do
   end  
 end
 
-task :publish => [:upload_bl_data]
+task :publish => [:upload_bl_data, :upload_lt_data]
