@@ -3,6 +3,8 @@ require 'rake'
 require 'rake/clean'
 require 'json'
 require 'dotenv'
+require 'hpricot'
+require 'open-uri'
 
 Dotenv.load
 
@@ -21,6 +23,10 @@ end
 
 task :about_bath do
   sh %{ruby bin/about-bath.rb}
+end
+
+task :set_in_bath do
+  sh %{ruby bin/set-in-bath.rb}
 end
 
 task :upload_about_bath do
